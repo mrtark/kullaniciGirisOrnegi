@@ -38,28 +38,42 @@ public class girisDTO {
         return kullanici;
     }
 
-    //kullanıcının giriş yapıp yapmadığını kt edicem
-    public String girisYapmısmı(){
-        String kullaniciAdiGkt,sifreGkt;
+    //Kullanıcıdan admin ve şifre bilgisini alan metod
+    public String[] kullanıcıdanInputAl(){
         Scanner girisKt = new Scanner(System.in);
+        String kullaniciAdiGkt,sifreGkt;
+
+        String[] alınanGirisBilgileri = new String[2];  //alınacak bilgi, tek boyutlu ama 2 elemanlı olacak
+
         System.out.print("Lütfen Kullanıcı Adınızı Giriniz: ");
         kullaniciAdiGkt= girisKt.nextLine();
         System.out.print("Lütfen Kullanıcı Şifrenizi Giriniz: ");
         sifreGkt= girisKt.nextLine();
 
+        alınanGirisBilgileri[0] = kullaniciAdiGkt;
+        alınanGirisBilgileri[1] = sifreGkt;
+        return alınanGirisBilgileri;
+    }
+
+
+    //kullanıcının giriş yapıp yapmadığını kt edicem
+    public String girisYapmısmı(){
+        String[] ref_kullanıcıdanInputAl = new String[2];
+        ref_kullanıcıdanInputAl = kullanıcıdanInputAl();
+
         girisDTO[] referansKullanici = tumKullanicilarGirisVerisi();
 
-        if( kullaniciAdiGkt.equals(referansKullanici[0].getKullaniciAdi())
+        if( ref_kullanıcıdanInputAl[0].equals(referansKullanici[0].getKullaniciAdi())
                 &&
-                sifreGkt.equals(referansKullanici[0].getSifre()) ){
+                ref_kullanıcıdanInputAl[1].equals(referansKullanici[0].getSifre()) ){
             System.out.println("- ** Admin olarak Giriş Yapıldı! ** -");
-        } else if (kullaniciAdiGkt.equals(referansKullanici[1].getKullaniciAdi())
+        } else if (ref_kullanıcıdanInputAl[0].equals(referansKullanici[1].getKullaniciAdi())
                 &&
-                sifreGkt.equals(referansKullanici[1].getSifre())) {
+                ref_kullanıcıdanInputAl[1].equals(referansKullanici[1].getSifre())) {
             System.out.println("- ** Writer olarak Giriş Yapıldı! ** -");
-        } else if (kullaniciAdiGkt.equals(referansKullanici[2].getKullaniciAdi())
+        } else if (ref_kullanıcıdanInputAl[0].equals(referansKullanici[2].getKullaniciAdi())
                 &&
-                sifreGkt.equals(referansKullanici[2].getSifre())) {
+                ref_kullanıcıdanInputAl[1].equals(referansKullanici[2].getSifre())) {
             System.out.println("- ** User olarak Giriş Yapıldı! ** -");
         }else {
             System.out.println("Rol Dışı Giriş Denendi");
