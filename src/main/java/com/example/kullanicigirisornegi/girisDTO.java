@@ -63,23 +63,28 @@ public class girisDTO {
 
         girisDTO[] referansKullanici = tumKullanicilarGirisVerisi();
 
+        String kazanılanRol = "";
+
         if( ref_kullanıcıdanInputAl[0].equals(referansKullanici[0].getKullaniciAdi())
                 &&
                 ref_kullanıcıdanInputAl[1].equals(referansKullanici[0].getSifre()) ){
             System.out.println("- ** Admin olarak Giriş Yapıldı! ** -");
+            kazanılanRol = "ADMİN_PTRN";
         } else if (ref_kullanıcıdanInputAl[0].equals(referansKullanici[1].getKullaniciAdi())
                 &&
                 ref_kullanıcıdanInputAl[1].equals(referansKullanici[1].getSifre())) {
             System.out.println("- ** Writer olarak Giriş Yapıldı! ** -");
+            kazanılanRol = "WRITER_OKUYAN";
         } else if (ref_kullanıcıdanInputAl[0].equals(referansKullanici[2].getKullaniciAdi())
                 &&
                 ref_kullanıcıdanInputAl[1].equals(referansKullanici[2].getSifre())) {
             System.out.println("- ** User olarak Giriş Yapıldı! ** -");
+            kazanılanRol = "USER_KULLANICI";
         }else {
             System.out.println("Rol Dışı Giriş Denendi");
         }
 
-        return "";
+        return kazanılanRol;
     }
 
     //getter setter
