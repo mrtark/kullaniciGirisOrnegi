@@ -91,7 +91,7 @@ public class girisDTO {
         }
         else {
             System.out.println("-- Giriş Hakkınız Bitti  --");
-            System.out.println("Sonlandırılıyor...");
+            System.out.println("Sonlandırılıyor....");
         }
 
         return kazanılanRol;
