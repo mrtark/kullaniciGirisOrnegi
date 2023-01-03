@@ -38,8 +38,10 @@ public class DosyaVeriBilgisi {
         }
     } //end - - parametresiz constructer
 
+    /*
     public static void main(String[] args) {
         DosyaVeriBilgisi yeniDosya = new DosyaVeriBilgisi();
 
     }
+    */
 }
