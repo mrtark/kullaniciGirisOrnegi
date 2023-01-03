@@ -23,8 +23,8 @@ public class DosyaİzinServisi {
                 "[7]  Dosyaya Veri Yaz\n" +
                 "[8]  Dosya İçeriğini Oku\n" +
                 "[9]  Dosya Adını Değiştir\n" +
-                "[10] super code olan writer veya user rolü  ==>  super-admin olsun\"
-                "[11] Sistemden Çık"
+                "[10] super code olan writer veya user rolü  ==>  super-admin olsun\n" +
+                "[11] Sistemden Çık");
                 );
         System.out.print("-> ");
         return inputAl.nextInt();
