@@ -143,7 +143,9 @@ public class DosyaİzinServisi {
     //------------------------------------ Switch Case secim metodları
     private void dosyaOlustur() {
         System.out.println("__ Dosya Oluştur Menüsü __");
-        System.out.println(girisDurumuNe);
+        System.out.print("Oluşturmak İstediğiniz Dosya Adını Giriniz: ");
+        String dosyaAdi = inputAl.nextLine().concat("txt");
+        String nereye = DosyaDizinAdı.DIZINYOLU.concat(dosyaAdi);
     }
     private void dosyaSil() {
         System.out.println("__ Dosya Sil Menüsü __");
