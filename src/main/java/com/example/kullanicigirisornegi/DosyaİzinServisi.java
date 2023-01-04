@@ -122,6 +122,7 @@ public class DosyaİzinServisi {
                     dosyaAdıDegis();
                     break;
                 case 10:
+                    rolDegis();
                     break;
                 case 11:
                     logOut();
@@ -167,6 +168,9 @@ public class DosyaİzinServisi {
     }
     private void dosyaAdıDegis() {
         System.out.println("__ Seçili Dosya Adını Değiştir Menüsü __");
+    }
+    private void rolDegis(){
+
     }
     private void logOut() {
         System.out.println("__ Sistemden Çıkıs Yapılsın Mı? __");
