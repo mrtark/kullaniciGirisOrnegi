@@ -225,6 +225,7 @@ public class DosyaİzinServisi {
     private void logOut() {
         System.out.println("__ Sistemden Çıkıs Yapılsın Mı? __");
         System.out.println("( E / H ) => ");
+        inputAl.nextLine();
         String cevap = inputAl.nextLine().toLowerCase();
         if (cevap.equals("e")){
             System.out.println("Çıkış Yapılıyor...");
