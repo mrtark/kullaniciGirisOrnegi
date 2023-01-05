@@ -24,12 +24,12 @@ public class DosyaVeriBilgisi {
         dosyaYapisi =  new File(dizinyolu);
         try {
             if (dosyaYapisi.createNewFile()){
-                log.info("ID No: "+idNumarasi + " => [\n" + dosyaYapisi + " ]" + " adlı dosya başarıyla oluşturuldu.");
+                //log.info("ID No: "+idNumarasi + " => [\n" + dosyaYapisi + " ]" + " adlı dosya başarıyla oluşturuldu.");
                 //System.out.println(dosyaYapisi + " adlı dosya başarıyla oluşturuldu.");
             }else {
-                log.error("ID No: "+idNumarasi + " => [\n" + dosyaYapisi + " adlı dosya dizinde zaten mevcut!");
-                System.out.println(" => [\n" + dosyaYapisi + " adlı dosya dizinde zaten mevcut!");
-                throw new MuratArıkException("=> [\n" + dosyaYapisi + "Kendi Exception yapımdan uyarı. Dosya zaten var!");
+                //log.error("ID No: "+idNumarasi + " => [\n" + dosyaYapisi + " adlı dosya dizinde zaten mevcut!");
+                //System.out.println(" => [\n" + dosyaYapisi + " adlı dosya dizinde zaten mevcut!");
+                //throw new MuratArıkException("=> [\n" + dosyaYapisi + "Kendi Exception yapımdan uyarı. Dosya zaten var!");
             }
         }catch (IOException ioHatalarınıYakala){
             ioHatalarınıYakala.printStackTrace();
