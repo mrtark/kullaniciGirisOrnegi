@@ -2,6 +2,7 @@ package com.example.kullanicigirisornegi;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Date;
 import java.util.Scanner;
 
 public class DosyaİzinServisi {
@@ -147,7 +148,8 @@ public class DosyaİzinServisi {
 
     //------------------------------------ Switch Case secim metodları
     private void dosyaOlustur() {
-        System.out.println("__ Dosya Oluştur Menüsü __");
+        System.out.println("____[ Dosya Oluştur Menüsü ]____");
+        dizindekiDigerDosyalar();
         System.out.print("Oluşturmak İstediğiniz Dosya Adını Giriniz: ");
         inputAl.nextLine(); //int değer aldıktan sonra string değer alınca sapıtıyor. bu şekilde önüne geçtim
         String dosyaAdi = inputAl.nextLine().concat(".txt");
@@ -171,13 +173,39 @@ public class DosyaİzinServisi {
         System.out.println("__ Dosya Sil Menüsü __");
     }
     private void dosyaBilgileri() {
-        System.out.println("__ Dosya Bilgileri Menüsü __");
+        System.out.println("____[ Dosya Bilgileri Menüsü ]____");
+        dizindekiDigerDosyalar();
+        System.out.print("Bilgilerini Görmek İstediğiniz Dosya Adını Giriniz: ");
+        inputAl.nextLine(); //int değer aldıktan sonra string değer alınca sapıtıyor. bu şekilde önüne geçtim
+        String dosyaAdi = inputAl.nextLine();
+        dosya = new File(DosyaDizinAdı.DIZINYOLU.concat(dosyaAdi));
+        System.out.println("{ " + dosyaAdi + " }" + " Dosyanın, İçerik Karakter Sayısı: " + dosya.length());
+        System.out.println("{ " + dosyaAdi + " }" + " Dosyanın, Yazma İzni: " + dosya.canWrite());
+        System.out.println("{ " + dosyaAdi + " }" + " Dosyanın Okuma izni: " + dosya.canWrite());
+        System.out.println("{ " + dosyaAdi + " }" + " Dosyanın Çalıştırma izni: " + dosya.canExecute());
+        System.out.println("{ " + dosyaAdi + " }" + " Dosyanın Hashcode: " + dosya.hashCode());
+        System.out.println("{ " + dosyaAdi + " }" + " Dosyanın Boyutu GB: " + dosya.getTotalSpace());
+        System.out.println("{ " + dosyaAdi + " }" + " Dosyanın Kullanabileceğim GB: " + dosya.getFreeSpace());
+        System.out.println("{ " + dosyaAdi + " }" + " Dosyanın Kullandığım GB: " + dosya.getUsableSpace());
+        System.out.println("{ " + dosyaAdi + " }" + " Dosyanın Bulunduğu Dizin Bilgisi: " + dosya.getAbsolutePath());
+        System.out.println("{ " + dosyaAdi + " }" + " Dosyanın Değiştirilme Tarihi: " + new Date(dosya.lastModified()));
+
     }
     private void dosyaİzinleri() {
         System.out.println("__ Dosya İzin Bilgileri Menüsü __");
     }
     private void dizindekiDigerDosyalar() {
         System.out.println("__ Dizindeki Diğer Dosyalar Menüsü __");
+
+        /*
+        for (File getir : new File("C:\\Users\\WORKSTATION\\Desktop\\Web Tasarım\\ecodation tekrar içerikleri\\DERS 5 notlar\\Dizin\\").listFiles()){
+            System.out.println(getir.getName());
+        }
+        */
+
+        for (File getir : new File(DosyaDizinAdı.DIZINYOLU).listFiles()){
+            System.out.println(getir.getName());
+        }
     }
     private void rolBilgisi() {
         System.out.println("__ Mevcut Rol Bilgisi Menüsü __");
