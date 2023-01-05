@@ -1,5 +1,7 @@
 package com.example.kullanicigirisornegi;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class DosyaİzinServisi {
@@ -9,11 +11,14 @@ public class DosyaİzinServisi {
     private girisDTO ref_girisYapmismi;
     private String girisDurumuNe;
 
+    private File dosya;
+
     //parametresiz constructer
     public DosyaİzinServisi() {
         referansDosyaVeriBilgisi = new DosyaVeriBilgisi();
         inputAl = new Scanner(System.in);
         ref_girisYapmismi = new girisDTO();
+
     }
     //islemler
     private int dosyaIslemleri() {
@@ -144,8 +149,23 @@ public class DosyaİzinServisi {
     private void dosyaOlustur() {
         System.out.println("__ Dosya Oluştur Menüsü __");
         System.out.print("Oluşturmak İstediğiniz Dosya Adını Giriniz: ");
-        String dosyaAdi = inputAl.nextLine().concat("txt");
+        inputAl.nextLine(); //int değer aldıktan sonra string değer alınca sapıtıyor. bu şekilde önüne geçtim
+        String dosyaAdi = inputAl.nextLine().concat(".txt");
         String nereye = DosyaDizinAdı.DIZINYOLU.concat(dosyaAdi);
+        dosya = new File(nereye);
+        try {
+            if (dosya.createNewFile()){
+                System.out.println(dosya + " adlı dosya başarıyla oluşturuldu.");
+            }else {
+               System.out.println(" => [\n" + dosya + " adlı dosya dizinde zaten mevcut!");
+               //throw new MuratArıkException("=> [\n" + dosya + "Kendi Exception yapımdan uyarı. Dosya zaten var!");
+            }
+        }catch (IOException ioHatalarınıYakala){
+            ioHatalarınıYakala.printStackTrace();
+        }catch (Exception genelHataYakala){
+            genelHataYakala.printStackTrace();
+        }
+
     }
     private void dosyaSil() {
         System.out.println("__ Dosya Sil Menüsü __");
