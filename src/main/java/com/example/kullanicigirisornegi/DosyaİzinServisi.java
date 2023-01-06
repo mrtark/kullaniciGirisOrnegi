@@ -1,6 +1,8 @@
 package com.example.kullanicigirisornegi;
 
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Date;
 import java.util.Scanner;
@@ -229,6 +231,40 @@ public class DosyaİzinServisi {
     }
     private void dosyaVeriYaz() {
         System.out.println("__ Seçili Dosyaya Veri Yaz Menüsü __");
+        dizindekiDigerDosyalar();
+        System.out.print("Yazmak İstediğiniz Dosya Adını Giriniz: ");
+        inputAl.nextLine(); //int değer aldıktan sonra string değer alınca sapıtıyor. bu şekilde önüne geçtim
+        String dosyaAdi = inputAl.nextLine();
+        String nereye = DosyaDizinAdı.DIZINYOLU.concat(dosyaAdi);
+        dosya = new File(nereye);
+
+        System.out.print("Dosya içeriğinin üzerine mi yazılsın?" + "( E / H ) = ");
+        String cevap = inputAl.nextLine().toLowerCase();
+        if (cevap.equals("e")){
+            try (BufferedWriter refYaz = new BufferedWriter(new FileWriter(dosya,false))) {
+                System.out.println("Dosya üzerine yazılacak Veriyi - Verileri Giriniz: ");
+                String veri = inputAl.nextLine();
+                refYaz.write(veri);
+                refYaz.flush();
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+        else if (cevap.equals("h")){
+            try (BufferedWriter refYaz = new BufferedWriter(new FileWriter(dosya,true))) {
+                System.out.println("Dosya İçerisine eklenecek - yazılacak Veriyi - Verileri Giriniz: ");
+                String veri = inputAl.nextLine();
+                refYaz.write(veri);
+                refYaz.flush();
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+        else {
+            System.out.println("Geçersiz Cevap...");
+            System.out.println("Veri Yaz Menüsüne Yönlendiriliyorsunuz");
+            dosyaVeriYaz();
+        }
     }
     private void dosyaVeriOku() {
         System.out.println("__ Seçili Dosya İçeriğini Oku Menüsü __");
@@ -241,7 +277,7 @@ public class DosyaİzinServisi {
     }
     private void logOut() {
         System.out.println("__ Sistemden Çıkıs Yapılsın Mı? __");
-        System.out.println("( E / H ) => ");
+        System.out.print("( E / H ) = ");
         inputAl.nextLine();
         String cevap = inputAl.nextLine().toLowerCase();
         if (cevap.equals("e")){
