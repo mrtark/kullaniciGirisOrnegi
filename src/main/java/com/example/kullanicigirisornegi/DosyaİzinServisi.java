@@ -10,8 +10,7 @@ public class DosyaİzinServisi {
     private DosyaVeriBilgisi referansDosyaVeriBilgisi;
     private Scanner inputAl;
     private girisDTO ref_girisYapmismi;
-    private String girisDurumuNe;
-
+    private String girisDurumuNe;   //rol bilgisini taşıyor
     private File dosya;
 
     //parametresiz constructer
@@ -171,6 +170,23 @@ public class DosyaİzinServisi {
     }
     private void dosyaSil() {
         System.out.println("__ Dosya Sil Menüsü __");
+        dizindekiDigerDosyalar();
+        System.out.print("Silmek İstediğiniz Dosya Adını Giriniz: ");
+        inputAl.nextLine(); //int değer aldıktan sonra string değer alınca sapıtıyor. bu şekilde önüne geçtim
+        String dosyaAdi = inputAl.nextLine();
+        String nereye = DosyaDizinAdı.DIZINYOLU.concat(dosyaAdi);
+        dosya = new File(nereye);
+
+        try {
+            if (dosya.exists()){    //girilen dosya adında dosya var ise silecek
+                dosya.delete();
+                System.out.println("{ " + dosyaAdi + " }" + " Adlı Dosya Silindi.");
+            }else {
+                System.out.println("Dosya Silinemedi");
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
     private void dosyaBilgileri() {
         System.out.println("____[ Dosya Bilgileri Menüsü ]____");
@@ -209,6 +225,7 @@ public class DosyaİzinServisi {
     }
     private void rolBilgisi() {
         System.out.println("__ Mevcut Rol Bilgisi Menüsü __");
+        System.out.println("Giriş Yapılan Rol: " + girisDurumuNe);
     }
     private void dosyaVeriYaz() {
         System.out.println("__ Seçili Dosyaya Veri Yaz Menüsü __");
