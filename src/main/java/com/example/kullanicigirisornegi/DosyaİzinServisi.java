@@ -1,9 +1,6 @@
 package com.example.kullanicigirisornegi;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -240,7 +237,7 @@ public class DosyaİzinServisi {
 
         System.out.print("Dosya içeriğinin üzerine mi yazılsın?" + "( E / H ) = ");
         String cevap = inputAl.nextLine().toLowerCase();
-        if (cevap.equals("e")){
+        if (cevap.equals("e")){                                                         //false ise, içerik silinir ve yazılan içerik
             try (BufferedWriter refYaz = new BufferedWriter(new FileWriter(dosya,false))) {
                 System.out.println("Dosya üzerine yazılacak Veriyi - Verileri Giriniz: ");
                 String veri = inputAl.nextLine();
@@ -268,6 +265,23 @@ public class DosyaİzinServisi {
     }
     private void dosyaVeriOku() {
         System.out.println("__ Seçili Dosya İçeriğini Oku Menüsü __");
+        dizindekiDigerDosyalar();
+        System.out.print("İçeriğini Okumak İstediğiniz Dosya Adını Giriniz: ");
+        inputAl.nextLine(); //int değer aldıktan sonra string değer alınca sapıtıyor. bu şekilde önüne geçtim
+        String dosyaAdi = inputAl.nextLine();
+        String nerede = DosyaDizinAdı.DIZINYOLU.concat(dosyaAdi);
+        dosya = new File(nerede);
+        try (BufferedReader refOku = new BufferedReader(new FileReader(nerede))) {
+            StringBuilder refBuilder = new StringBuilder();
+            String satır = "";
+            while ( ( satır = refOku.readLine() )!=null ){
+                refBuilder.append(satır).append("\n");
+            }
+            String donOkuVeri = refBuilder.toString();
+            System.out.println("{ " + dosyaAdi + " }" + " Dosya Başarıyla Okundu!\nİçeriği: " + donOkuVeri);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
     private void dosyaAdıDegis() {
         System.out.println("__ Seçili Dosya Adını Değiştir Menüsü __");
