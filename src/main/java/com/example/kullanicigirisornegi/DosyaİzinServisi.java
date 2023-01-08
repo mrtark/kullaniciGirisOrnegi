@@ -31,7 +31,7 @@ public class DosyaİzinServisi {
                 "[7]  Dosyaya Veri Yaz\n" +
                 "[8]  Dosya İçeriğini Oku\n" +
                 "[9]  Dosya Adını Değiştir\n" +
-                "[10] super code olan writer veya user rolü  ==>  super-admin olsun\n" +
+                "[10] Rol Değiştir (SuperCode ile Admin Olabilirsiniz)\n" +
                 "[11] Sistemden Çık");
 
         System.out.print("-> ");
@@ -60,6 +60,8 @@ public class DosyaİzinServisi {
    Admin   = Create+, Delete+, Write+,Read+     / admin_ptrn        adminsifre
    Writer  = Create-, Delete-, Write+,Read+     / writer_okuyan     writersifre
    User    = Create-, Delete-, Write-,Read+     / user_kullanici    usersifre
+
+   superCode: XLMsuper1
     */
 
     //seçilen işlemi yap
@@ -126,7 +128,11 @@ public class DosyaİzinServisi {
                     dosyaAdıDegis();
                     break;
                 case 10:
-                    rolDegis();
+                    if (girisDurumuNe.equals("ADMİN_PTRN")){
+                        System.out.println("Rolünüz Zaten Admin");
+                    }else {
+                        rolDegis();
+                    }
                     break;
                 case 11:
                     logOut();
@@ -287,7 +293,18 @@ public class DosyaİzinServisi {
         System.out.println("__ Seçili Dosya Adını Değiştir Menüsü __");
     }
     private void rolDegis(){
-
+        System.out.println("____[ Rol Değiştirme Menüsü ]____");
+        System.out.println("Mevcut Rolünüz: " + girisDurumuNe);
+        System.out.print("Rol Değiştirmek için Super Code Bilgisini Giriniz: ");
+        inputAl.nextLine();
+        String rolDegis = inputAl.nextLine();
+        if (rolDegis.equals("XLMsuper1")){
+            girisDurumuNe = "ADMIN_PTRN";
+            System.out.println("Rol Değiştirme Başarılı.\n" + "Yeni Rol: " + girisDurumuNe);
+        }else {
+            System.out.println("Super Code Bilgisi Yanlış!\nRol Değiştirilemedi.");
+            System.out.println("Rolünüz: " + girisDurumuNe);
+        }
     }
     private void logOut() {
         System.out.println("__ Sistemden Çıkıs Yapılsın Mı? __");
