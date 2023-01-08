@@ -15,6 +15,7 @@ public class DosyaVeriBilgisi {
     private String idNumarasi;
     private String dizinyolu;
     private File dosyaYapisi;
+
     //start - - parametresiz constructer
     public DosyaVeriBilgisi() {
         this.idNumarasi = UUID.randomUUID().toString();
