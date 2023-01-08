@@ -1,9 +1,9 @@
 package com.example.kullanicigirisornegi;
 
 public enum ERoller {
-    ADMIN_PTRN(1,"admin_ptrn"),
-    WRİTER_OKUYAN(2,"writer_okuyan"),
-    USER_KULLANICI(3,"user_kullanici");
+    ADMIN(1,"admin"),
+    WRİTER(2,"writer"),
+    USER(3,"user");
 
     private final int rolAnahtarı;
     private final String rolDeğeri;

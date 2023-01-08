@@ -33,9 +33,9 @@ public class girisDTO {
     */
     public girisDTO[] tumKullanicilarGirisVerisi(){
         girisDTO[] kullanici = new girisDTO[3]; //admin-writer-users için
-        kullanici[0] = new girisDTO(ERoller.ADMIN_PTRN.getRolDeğeri(),"adminsifre");
-        kullanici[1] = new girisDTO(ERoller.WRİTER_OKUYAN.getRolDeğeri(),"writersifre");
-        kullanici[2] = new girisDTO(ERoller.USER_KULLANICI.getRolDeğeri(),"usersifre");
+        kullanici[0] = new girisDTO(ERoller.ADMIN.getRolDeğeri(),"adminsifre");
+        kullanici[1] = new girisDTO(ERoller.WRİTER.getRolDeğeri(),"writersifre");
+        kullanici[2] = new girisDTO(ERoller.USER.getRolDeğeri(),"usersifre");
 
         return kullanici;
     }

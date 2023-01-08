@@ -1,0 +1,36 @@
+
+
+1) Giriş Ekranı Oluştur
+    - roller Enum yapısında olacak
+    - admin,writer,user bilgileri aşağıdaki gibi tek boyutlu dizi şeklinde saklanıcak;
+            admin : kullanıcı adı (admin)  ,şifre(adminsifre)
+            writer: kullanıcı adı (writer) ,şifre(writersifre)
+            user  : kullanıcı adı (user)   ,şifre(usersifre
+    - login olurken kullanıcıdan aşağıdaki bilgiler istensin (3 hakkımız olacak, hak bitince sistem çıkış yapar);
+            - kullanıcı adı
+            - şifre
+
+2) Varsayılan olarak  dosya ve dosya dizinlerini içeren bir class oluşturalım. Dosya içeriği;
+    - Dosya Oluştur - Create (C)
+    - Dosya Sil     - Delete (D)
+    - Dosya Yaz     - Write  (W)
+    - Dosya Oku     - Read   (R)
+
+3) Rollerin Yapabileceği İşlemler;
+    - Admin  = C+,D+,W+,R+
+    - Writer = C-,D-,W+,R+
+    - User   = C-,D-,W-,R+
+
+4) Yapılacak işlemlere ait menüleri oluştur;
+           |- Yapmak İstediğiniz İşlemi Seçiniz -|
+           [1]  Dosya Oluştur
+           [2]  Dosya Sil
+           [3]  Dosya Bilgilerini Getir
+           [4]  Dosya İzin Bilgileri (Roller Hangi İşlemleri Yapabilir)
+           [5]  Mevcut Dizindeki Diğer Dosyaları Göster
+           [6]  Mevcut Rol Bilgisini Getir
+           [7]  Dosyaya Veri Yaz
+           [8]  Seçili Dosya İçeriğini Oku
+           [9]  Seçili Dosya Adını Değiştir
+           [10] Rol Değiştir (SuperCode XLMsuper1)
+           [11] Sistemden Çık");

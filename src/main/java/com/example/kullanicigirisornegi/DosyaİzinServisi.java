@@ -25,12 +25,12 @@ public class DosyaİzinServisi {
                 "[1]  Dosya Oluştur\n" +
                 "[2]  Dosya Sil\n" +
                 "[3]  Dosya Bilgilerini Getir\n" +
-                "[4]  Dosya İzin Bilgileri (Rol Değiştir)\n" +
+                "[4]  Dosya İzin Bilgileri (Roller Hangi İşlemleri Yapabilir)\n" +
                 "[5]  Mevcut Dizindeki Diğer Dosyaları Göster\n" +
                 "[6]  Mevcut Rol Bilgisini Getir\n" +
                 "[7]  Dosyaya Veri Yaz\n" +
-                "[8]  Dosya İçeriğini Oku\n" +
-                "[9]  Dosya Adını Değiştir\n" +
+                "[8]  Seçili Dosya İçeriğini Oku\n" +
+                "[9]  Seçili Dosya Adını Değiştir\n" +
                 "[10] Rol Değiştir (SuperCode ile Admin Olabilirsiniz)\n" +
                 "[11] Sistemden Çık");
 
@@ -55,14 +55,6 @@ public class DosyaİzinServisi {
             islemiYap();
         }
     }
-
-   /*
-   Admin   = Create+, Delete+, Write+,Read+     / admin_ptrn        adminsifre
-   Writer  = Create-, Delete-, Write+,Read+     / writer_okuyan     writersifre
-   User    = Create-, Delete-, Write-,Read+     / user_kullanici    usersifre
-
-   superCode: XLMsuper1
-    */
 
     //seçilen işlemi yap
     private void islemiYap() {
@@ -142,14 +134,7 @@ public class DosyaİzinServisi {
                     break;
             }
         }
-        /*
-            //kullanıcı verisi
-        private String kullaniciVerisi () {
-
-        }
-         */
     }
-
     //------------------------------------ Switch Case secim metodları
     private void dosyaOlustur() {
         System.out.println("____[ Dosya Oluştur Menüsü ]____");
@@ -214,6 +199,9 @@ public class DosyaİzinServisi {
     }
     private void dosyaİzinleri() {
         System.out.println("__ Dosya İzin Bilgileri Menüsü __");
+        System.out.println("- Admin  = C+,D+,W+,R+\n" +
+                "- Writer = C-,D-,W+,R+\n" +
+                "- User   = C-,D-,W-,R+");
     }
     private void dizindekiDigerDosyalar() {
         System.out.println("__ Dizindeki Diğer Dosyalar Menüsü __");
