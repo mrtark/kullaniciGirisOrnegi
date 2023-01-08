@@ -7,6 +7,7 @@ public class girisDTO {
     private String sifre;
 
     private static int GIRISHAKKI = 3;
+    private static String kazanılanRol = "";
     public girisDTO() {
     }
 
@@ -64,7 +65,7 @@ public class girisDTO {
 
         girisDTO[] referansKullanici = tumKullanicilarGirisVerisi();
 
-        String kazanılanRol = "";
+
 
         if (GIRISHAKKI > 1){
             if( ref_kullanıcıdanInputAl[0].equals(referansKullanici[0].getKullaniciAdi())
